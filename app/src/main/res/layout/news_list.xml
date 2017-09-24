@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_margin="16sp"
+    style="@style/design1"
+    android:padding="16sp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Politics"
+        android:textSize="18sp"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:id="@+id/head"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/time"
+        android:text="2:48 PM"/>
+    <TextView
+        android:paddingTop="8sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="One upen a time in lololol....."
+        android:id="@+id/web"
+        android:textSize="18sp"/>
+
+</LinearLayout>
