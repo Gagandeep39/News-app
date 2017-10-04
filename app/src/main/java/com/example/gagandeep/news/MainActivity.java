@@ -3,26 +3,25 @@ package com.example.gagandeep.news;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     NewsAdapter mAdapter;
+    News1Adapter adapter;
     public static final String WEB_URL = "https://content.guardianapis.com/search?api-key=0889e93a-7f87-4f71-9215-427bec507ad4";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.scroll_main);
 
         ArrayList<News> news = new ArrayList<>();
 //        news.add(new News("Books", "", "Once upon a dream.....", "www.news.com", "2:48"));
@@ -33,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
 //        news.add(new News("Books", "", "Once upon a dream.....", "www.news.com", "2:48"));
 //        news.add(new News("Music", "", "Once upon a dream.....", "www.news.com", "2:48"));
         mAdapter = new NewsAdapter(this, news);
+       // adapter = new News1Adapter(this, news);
         ListView listView = findViewById(R.id.list);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -43,9 +43,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         listView.setAdapter(mAdapter);
+        listView.setNestedScrollingEnabled(true);
+//
 
+//        RecyclerView recyclerView = findViewById(R.id.recycler);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        recyclerView.setAdapter(adapter);
         NewsAsyncTask task = new NewsAsyncTask();
         task.execute(WEB_URL);
+
     }
 
     public class NewsAsyncTask extends AsyncTask<String, Void, List<News>>{

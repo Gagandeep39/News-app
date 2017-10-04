@@ -1,14 +1,14 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">#12bfbf</item>
+        <item name="colorPrimaryDark">#109797</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
     <style name="ripple1">
-        <item name="android:colorControlHighlight">@color/colorPrimary</item>
+        <item name="android:colorControlHighlight">#11b7b7</item>
     </style>
     <style name="design1">
         <item name="theme">@style/ripple1</item>
