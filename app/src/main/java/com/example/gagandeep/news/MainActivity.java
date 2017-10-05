@@ -5,6 +5,8 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -15,6 +17,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     NewsAdapter mAdapter;
     News1Adapter adapter;
+    RecyclerView recyclerView;
     public static final String WEB_URL = "https://content.guardianapis.com/search?api-key=0889e93a-7f87-4f71-9215-427bec507ad4";
 
 
@@ -23,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.scroll_main);
 
-        ArrayList<News> news = new ArrayList<>();
+//        ArrayList<News> news = new ArrayList<>();
 //        news.add(new News("Books", "", "Once upon a dream.....", "www.news.com", "2:48"));
 //        news.add(new News("Music", "", "Once upon a dream.....", "www.news.com", "2:48"));
 //        news.add(new News("Business", "", "Once upon a dream.....", "www.news.com", "2:48"));
@@ -31,22 +34,22 @@ public class MainActivity extends AppCompatActivity {
 //        news.add(new News("Sports", "", "Once upon a dream.....", "www.news.com", "2:48"));
 //        news.add(new News("Books", "", "Once upon a dream.....", "www.news.com", "2:48"));
 //        news.add(new News("Music", "", "Once upon a dream.....", "www.news.com", "2:48"));
-        mAdapter = new NewsAdapter(this, news);
+//        mAdapter = new NewsAdapter(this, news);
        // adapter = new News1Adapter(this, news);
-        ListView listView = findViewById(R.id.list);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                News news1 = (News) mAdapter.getItem(i);
-                Uri uri = Uri.parse(news1.getUrl());
-                startActivity(new Intent(Intent.ACTION_VIEW, uri));
-            }
-        });
-        listView.setAdapter(mAdapter);
-        listView.setNestedScrollingEnabled(true);
+//        ListView listView = findViewById(R.id.list);
+//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                News news1 = (News) mAdapter.getItem(i);
+//                Uri uri = Uri.parse(news1.getUrl());
+//                startActivity(new Intent(Intent.ACTION_VIEW, uri));
+//            }
+//        });
+//        listView.setAdapter(mAdapter);
+//        listView.setNestedScrollingEnabled(true);
 //
 
-//        RecyclerView recyclerView = findViewById(R.id.recycler);
+        recyclerView = findViewById(R.id.recycler);
 //        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 //        recyclerView.setAdapter(adapter);
         NewsAsyncTask task = new NewsAsyncTask();
@@ -68,9 +71,14 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(List<News> news) {
 
-            mAdapter.clear();
+            //mAdapter.clear();
             if(news!=null && !news.isEmpty()){
-                mAdapter.addAll(news);
+                //mAdapter.addAll(news);
+                News1Adapter adapter1 = new News1Adapter(getBaseContext(), news);
+                recyclerView.setLayoutManager(new LinearLayoutManager(getBaseContext()));
+                recyclerView.setAdapter(adapter1);
+
+
             }
         }
     }
