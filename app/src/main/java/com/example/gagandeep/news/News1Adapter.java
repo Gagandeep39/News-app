@@ -59,7 +59,7 @@ public class News1Adapter extends RecyclerView.Adapter<News1Adapter.ViewHolder> 
             public void onClick(View view) {
                     //News news1 = list.get(position);
                 Uri uri = Uri.parse(current.getUrl());
-                context.startActivity(new Intent(Intent.ACTION_VIEW, uri));
+                context.startActivity(new Intent(Intent.ACTION_VIEW, uri).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
             }
         });
 
